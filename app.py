@@ -67,7 +67,4 @@ else:
     st.info("Enter a ticker and click 'Run Analysis' to begin.")
 '''
 
-with open("/mnt/data/app.py", "w", encoding="utf-8") as f:
-    f.write(app_code)
 
-"/mnt/data/app.py"
