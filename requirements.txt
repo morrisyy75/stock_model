@@ -4,3 +4,5 @@ pandas
 openpyxl
 tabulate
 textblob
+finnhub-python
+scikit-learn
