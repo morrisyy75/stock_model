@@ -27,6 +27,15 @@ if submit:
         col2.metric("Fund Score", result.get("Fund Score", "N/A"))
         col3.metric("Total Score", result.get("Total Score", "N/A"))
 
+         # Recommendation Section
+        st.subheader("🧭 Summary & Recommendation")
+        rec_keys = [
+            "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
+            "Short-Term Rec", "Long-Term Rec"
+        ]
+        rec_data = {k: result[k] for k in rec_keys if k in result}
+        st.dataframe(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
+
         # Fundamentals Table
         st.subheader("🧮 Fundamentals")
         fund_keys = [
@@ -47,15 +56,6 @@ if submit:
         ]
         tech_data = {k: result[k] for k in tech_keys if k in result}
         st.dataframe(pd.DataFrame(tech_data.items(), columns=["Metric", "Value"]))
-
-        # Recommendation Section
-        st.subheader("🧭 Summary & Recommendation")
-        rec_keys = [
-            "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
-            "Short-Term Rec", "Long-Term Rec"
-        ]
-        rec_data = {k: result[k] for k in rec_keys if k in result}
-        st.dataframe(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
 
         # Placeholder for future charts
         st.subheader("📉 Charts & Comparisons (Coming Soon)")
