@@ -34,7 +34,7 @@ if submit:
             "Short-Term Rec", "Long-Term Rec"
         ]
         rec_data = {k: result[k] for k in rec_keys if k in result}
-        st.dataframe(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
+        st.table(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
 
         # Fundamentals Table
         st.subheader("🧮 Fundamentals")
@@ -44,7 +44,7 @@ if submit:
             "Forward Dividend Yield", "Trailing Dividend Yield", "Ex-Div Date"
         ]
         fund_data = {k: result[k] for k in fund_keys if k in result}
-        st.dataframe(pd.DataFrame(fund_data.items(), columns=["Metric", "Value"]))
+        st.table(pd.DataFrame(fund_data.items(), columns=["Metric", "Value"]))
 
         # Technicals Table
         st.subheader("📈 Technical Indicators")
@@ -55,7 +55,7 @@ if submit:
             "Trend Signal", "Market Mode"
         ]
         tech_data = {k: result[k] for k in tech_keys if k in result}
-        st.dataframe(pd.DataFrame(tech_data.items(), columns=["Metric", "Value"]))
+        st.table(pd.DataFrame(tech_data.items(), columns=["Metric", "Value"]))
 
         # Placeholder for future charts
         st.subheader("📉 Charts & Comparisons (Coming Soon)")
