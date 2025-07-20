@@ -10,13 +10,12 @@ st.title("🦍 StockMonkey Stock Analyzer")
 # Sidebar input
 with st.sidebar:
     ticker = st.text_input("Enter Stock Ticker", value="AAPL")
-    period = st.selectbox("Select Time Period", ["1mo", "3mo", "6mo", "1y", "2y"])
     submit = st.button("Run Analysis")
 
 # Run analysis
 if submit:
     with st.spinner("Analyzing..."):
-        result = analyze_stock(ticker, period)
+        result = analyze_stock(ticker)  # No period passed
 
     if not result or isinstance(result, str):
         st.error("Analysis failed or data not available.")
@@ -58,10 +57,9 @@ if submit:
         rec_data = {k: result[k] for k in rec_keys if k in result}
         st.dataframe(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
 
-        # 📊 Placeholder for Future Charts
+        # Placeholder for future charts
         st.subheader("📉 Charts & Comparisons (Coming Soon)")
-        st.markdown("PEG vs Sector Average • Revenue Growth vs Sector • D/E Ratio vs Sector")
-        st.markdown("Price vs MA20 vs S&P500")
+        st.markdown("PEG vs Sector • Revenue Growth vs Sector • D/E Ratio vs Sector")
+        st.markdown("Price vs MA20 vs S&P500 MA20")
 else:
     st.info("Enter a ticker and click 'Run Analysis' to begin.")
-
