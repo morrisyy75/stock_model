@@ -1,6 +1,5 @@
 
 # Re-run after kernel reset to regenerate app.py
-app_code = '''
 import streamlit as st
 import pandas as pd
 from real_engine import analyze_stock
@@ -65,6 +64,4 @@ if submit:
         st.markdown("Price vs MA20 vs S&P500")
 else:
     st.info("Enter a ticker and click 'Run Analysis' to begin.")
-'''
-
 
