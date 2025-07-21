@@ -10,14 +10,14 @@ st.set_page_config(page_title="📈 StockMonkey Analyzer", layout="wide")
 # 🔷 Head bar: Logo + Ticker input + Submit button
 col1, col2 = st.columns([3, 2])
 with col1:
-    st.markdown("## 🦍 StockMonkey Analyzer")
+    st.markdown("##StockMonkey Analyzer")
 with col2:
     with st.form(key="ticker_form"):
         ticker_input = st.text_input("Enter Ticker", value=st.session_state.get("ticker", "AAPL"))
         submit = st.form_submit_button("Run Analysis")
 
 # 🔷 Sidebar modern selectbox
-section = st.sidebar.selectbox("🧩 Details", ["📊 Fundamentals", "📈 Technicals"])
+section = st.sidebar.selectbox("Details", ["Fundamentals", "Technicals"])
 
 # 🔷 Handle new analysis
 if submit:
