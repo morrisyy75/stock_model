@@ -24,8 +24,8 @@ if submit:
     else:
 
         # trading chart
-         st.subheader("📺 Live Trading Chart")
-        st.subheader("📺 Live Trading Chart")
+        
+st.subheader("📺 Live Trading Chart")
 
 tradingview_code = f"""
 <div class="tradingview-widget-container" style="margin-top: 20px;">
