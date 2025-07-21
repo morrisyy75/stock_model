@@ -72,6 +72,7 @@ if "result" in st.session_state and "ticker" in st.session_state:
 
     # 🔸 Recommendation
     st.subheader("🧭 Recommendation Summary")
+    st.caption("Powered by StockMonkey Analytics")
     rec_keys = [
         "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
         "Short-Term Rec", "Long-Term Rec"
