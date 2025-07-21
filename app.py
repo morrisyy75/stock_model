@@ -25,9 +25,9 @@ if submit:
         # Score Summary
         st.subheader("📊 Score Summary")
         col1, col2, col3 = st.columns(3)
-        col1.metric("Tech Score", result.get("Tech Score", "N/A"))
-        col2.metric("Fund Score", result.get("Fund Score", "N/A"))
-        col3.metric("Total Score", result.get("Total Score", "N/A"))
+        col1.metric("Technical Performance Score", result.get("Tech Score", "N/A"))
+        col2.metric("Fundamental Score", result.get("Fund Score", "N/A"))
+        col3.metric("Overall Score", result.get("Total Score", "N/A"))
 
         # Recommendation Section
         st.subheader("🧭 Summary & Recommendation")
