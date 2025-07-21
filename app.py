@@ -25,8 +25,6 @@ if submit:
 
         # trading chart
          st.subheader("📺 Live Trading Chart")
-
-        tradingview_code = f"""
         <div class="tradingview-widget-container" style="margin-top: 20px;">
           <div id="tradingview_chart" style="height:500px;"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
