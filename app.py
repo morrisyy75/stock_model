@@ -70,10 +70,10 @@ if submit:
         st.table(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
 
         ## YTD Growth Chart
-         if fig:
+        if fig:
             st.subheader("📉 YTD Growth Comparison")
             st.plotly_chart(fig, use_container_width=True)
-         else:
+        else:
             st.warning("Chart data not available.")
 
         # 🔸 Sidebar-controlled Details
