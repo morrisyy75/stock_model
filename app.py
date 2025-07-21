@@ -39,7 +39,7 @@ if "result" in st.session_state and "ticker" in st.session_state:
     ticker = st.session_state["ticker"]
 
     # 🔸 Live Trading Chart
-    st.subheader("📺 Live Trading Chart")
+    st.subheader("Live Trading Chart")
     tradingview_code = f"""
 <div class="tradingview-widget-container" style="margin-top: 20px;">
   <div id="tradingview_chart" style="height:500px;"></div>
