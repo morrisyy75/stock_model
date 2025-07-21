@@ -22,6 +22,31 @@ if submit:
     if not result or isinstance(result, str):
         st.error("Analysis failed or data not available.")
     else:
+
+        # trading chart
+         st.subheader("📺 Live Trading Chart")
+
+        tradingview_code = f"""
+        <div class="tradingview-widget-container" style="margin-top: 20px;">
+          <div id="tradingview_chart" style="height:500px;"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+          <script type="text/javascript">
+            new TradingView.widget({{
+              "autosize": true,
+              "symbol": "{ticker.upper()}",
+              "interval": "D",
+              "timezone": "Etc/UTC",
+              "theme": "dark",
+              "style": "1",
+              "locale": "en",
+              "toolbar_bg": "#f1f3f6",
+              "enable_publishing": false,
+              "allow_symbol_change": true,
+              "container_id": "tradingview_chart"
+            }});
+          </script>
+        </div>
+
         # Score Summary
         st.subheader("📊 Score Summary")
         col1, col2, col3 = st.columns(3)
