@@ -6,3 +6,4 @@ tabulate
 textblob
 finnhub-python
 scikit-learn
+plotly
