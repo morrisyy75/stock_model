@@ -3,6 +3,7 @@
 import streamlit as st
 import pandas as pd
 from real_engine import analyze_stock
+from visual_engine import get_ytd_comparison_chart
 
 st.set_page_config(page_title="📈 StockMonkey Analyzer", layout="wide")
 st.title("🦍 StockMonkey Stock Analyzer")
@@ -15,7 +16,8 @@ with st.sidebar:
 # Run analysis
 if submit:
     with st.spinner("Analyzing..."):
-        result = analyze_stock(ticker)  # No period passed
+        result = analyze_stock(ticker)
+        fig = get_ytd_comparison_chart(ticker)
 
     if not result or isinstance(result, str):
         st.error("Analysis failed or data not available.")
@@ -26,15 +28,6 @@ if submit:
         col1.metric("Tech Score", result.get("Tech Score", "N/A"))
         col2.metric("Fund Score", result.get("Fund Score", "N/A"))
         col3.metric("Total Score", result.get("Total Score", "N/A"))
-
-         # Recommendation Section
-        st.subheader("🧭 Summary & Recommendation")
-        rec_keys = [
-            "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
-            "Short-Term Rec", "Long-Term Rec"
-        ]
-        rec_data = {k: result[k] for k in rec_keys if k in result}
-        st.table(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
 
         # Fundamentals Table
         st.subheader("🧮 Fundamentals")
@@ -57,9 +50,20 @@ if submit:
         tech_data = {k: result[k] for k in tech_keys if k in result}
         st.table(pd.DataFrame(tech_data.items(), columns=["Metric", "Value"]))
 
-        # Placeholder for future charts
-        st.subheader("📉 Charts & Comparisons (Coming Soon)")
-        st.markdown("PEG vs Sector • Revenue Growth vs Sector • D/E Ratio vs Sector")
-        st.markdown("Price vs MA20 vs S&P500 MA20")
+        # Recommendation Section
+        st.subheader("🧭 Summary & Recommendation")
+        rec_keys = [
+            "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
+            "Short-Term Rec", "Long-Term Rec"
+        ]
+        rec_data = {k: result[k] for k in rec_keys if k in result}
+        st.table(pd.DataFrame(rec_data.items(), columns=["Metric", "Value"]))
+
+        # YTD Growth Chart
+        if fig:
+            st.subheader("📉 YTD Growth Comparison")
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.warning("Chart data not available.")
 else:
     st.info("Enter a ticker and click 'Run Analysis' to begin.")
