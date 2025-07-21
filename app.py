@@ -49,7 +49,7 @@ if submit:
 </div>
 """
 
-st.components.v1.html(tradingview_code, height=520)
+        st.components.v1.html(tradingview_code, height=520)
 
 
         # Score Summary
