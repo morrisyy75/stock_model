@@ -87,7 +87,7 @@ if "result" in st.session_state and "ticker" in st.session_state:
         st.warning("Chart data not available.")
 
     # 🔸 Sidebar-controlled Details
-    if section == "📊 Fundamentals":
+    if section == "Fundamentals":
         fund_keys = [
             "EPS", "EPS Growth (YoY)", "P/E", "PEG", "P/S", 
             "ROE", "Revenue Growth", "Debt-to-Equity", "FCF Yield", 
@@ -97,7 +97,7 @@ if "result" in st.session_state and "ticker" in st.session_state:
         st.subheader("📊 Fundamentals")
         st.table(pd.DataFrame(fund_data.items(), columns=["Metric", "Value"]))
 
-    elif section == "📈 Technicals":
+    elif section == "Technicals":
         tech_keys = [
             "RSI", "Momentum", "Price > MA20 (%)", 
             "Open Price", "Close Price", "Price Change (%)", 
