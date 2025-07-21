@@ -2,6 +2,7 @@
 # Re-run after kernel reset to regenerate app.py
 import streamlit as st
 import pandas as pd
+from datetime import datetime
 from real_engine import analyze_stock
 from visual_engine import get_ytd_comparison_chart
 
@@ -31,6 +32,7 @@ if submit:
         st.session_state["ticker"] = ticker_input
         st.session_state["result"] = result
         st.session_state["fig"] = fig
+        st.session_state["timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # 🔷 Display result if available
 if "result" in st.session_state and "ticker" in st.session_state:
@@ -73,6 +75,9 @@ if "result" in st.session_state and "ticker" in st.session_state:
     # 🔸 Recommendation
     st.subheader("🧭 Recommendation Summary")
     st.caption("Powered by StockMonkey Analytics")
+    timestamp = st.session_state.get("timestamp", None)
+    if timestamp:
+        st.caption(f"🔄 Updated on {timestamp}")
     rec_keys = [
         "Stock Type", "Valuation", "Strong Momentum Exception Rule", 
         "Short-Term Rec", "Long-Term Rec"
